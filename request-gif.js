@@ -36,6 +36,11 @@ function fetchAndDisplayGif(event) {
 
     // TODO
     // give the user a "Loading..." message while they wait
+    do {
+      $("#feedback").text("Loading...");
+      setGifLoadedStatus(false);
+    } while ($('#gif').attr() == "");
+
 
 }
 
