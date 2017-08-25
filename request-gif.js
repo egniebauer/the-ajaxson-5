@@ -1,9 +1,32 @@
 
 
 $(document).ready(function() {
-    $("#form-gif-request").submit(fetchAndDisplayGif);
+    $("#form-gif-request").submit(validateForm);
 });
 
+
+function clearPreviousValidation() {
+  var $riddle = $('#form-gif-request div input');
+  var $hammer = $("#error");
+
+  $riddle.removeClass('invalid');
+  $hammer.removeClass('invalid').attr("hidden", true);
+}
+
+
+function validateForm(event) {
+  event.preventDefault();
+  clearPreviousValidation();
+
+  var $riddle = $('#form-gif-request div input');
+
+  if ($riddle.val() == 5) {
+    fetchAndDisplayGif(event);
+  } else {
+    $("#error").text("No gifs for you!").attr("hidden", false).addClass('invalid');
+    $riddle.addClass('invalid');
+  }
+}
 
 /**
  * sends an asynchronous request to Giphy.com aksing for a random GIF using the
@@ -12,8 +35,6 @@ $(document).ready(function() {
  * upon receiving a response from Giphy, updates the DOM to display the new GIF
  */
 function fetchAndDisplayGif(event) {
-    event.preventDefault();
-
     var searchQuery = $('#form-gif-request input').val();
     var params = {
         api_key: config.GIPHY_KEY,
@@ -34,14 +55,10 @@ function fetchAndDisplayGif(event) {
         }
     });
 
-    // TODO
-    // give the user a "Loading..." message while they wait
     do {
       $("#feedback").text("Loading...");
       setGifLoadedStatus(false);
-    } while ($('#gif').attr() == "");
-
-
+    } while ( $('#gif').prop( "src" ) == "" );
 }
 
 
