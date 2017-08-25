@@ -3,34 +3,55 @@
 <head>
     <meta charset="utf-8"/>
     <title>The AJAXson 5</title>
-    <style>
-      .invalid {
-        color : red;
-        border-color : red;
-      }
-</style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script type="text/javascript" src="config.js"></script>
     <script type="text/javascript" src="request-gif.js"></script>
 </head>
 <body>
-    <h1>The AJAXson 5</h1>
-
-    <form id="form-gif-request" />
-        <label for="tag">What kind of Jackson 5 related gif do you want?</label>
-        <input name="tag" type="text"/>
-
-        <div>
-          <p>Prove you are not a robot by answering this riddle:</p>
-          <input name="validation" type="number"/><label for="validation"> Jacksons are better than one.</label>
-          <p id="error" hidden="true"></p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <div class="page-header text-center">
+          <h1>The AJAXson 5</h1>
         </div>
-
-        <input type="submit" value="Get my Gif!" />
-    </form>
-
-    <img id="gif" src="" hidden="true"/>
-    <p id="feedback" hidden="true"></p>
-
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <form id="form-gif-request" />
+          <div class="well well-lg">
+            <div class="form-group">
+              <label for="tag">What kind of Jackson 5 related gif do you want?</label>
+              <input  type="text" class="form-control" id="tag" placeholder="e.g. dance"/>
+            </div>
+          </div>
+          <div class="well well-lg">
+            <div class="form-group">
+              <label for="valid-jacksons">Prove you are not a robot by answering this riddle:</label>
+              <div class="input-group" id="validation" >
+                <input type="number" class="form-control" id="valid-jacksons"/>
+                <div class="input-group-addon" id="valid-jacksons-addon"><strong> Jacksons are better than one.</strong></div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Get my Gif!</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <div class="well well-lg" id="gif-well" hidden="true">
+          <center>
+            <img src="" class="img-responsive img-rounded"  id="gif" hidden="true"/>
+            <p id="feedback" hidden="true"></p>
+          </center>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
